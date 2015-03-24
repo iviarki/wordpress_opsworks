@@ -14,32 +14,19 @@
  * @package WordPress
  */
 
-// OpsWorks Specific Setup
+// ** OpsWorks Specific Setup ** //
 set_include_path(get_include_path() . PATH_SEPARATOR . '/srv/www/wordpress');
 $filename = "shared/config/opsworks.php";
 require_once($filename);
 $opsWorks = new OpsWorks();
 $db = $opsWorks->db;
-print_r($db);
-
 
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', $opsWorksDb->database);
-
-/** MySQL database username */
-define('DB_USER', $opsWorksDb->username);
-
-/** MySQL database password */
-define('DB_PASSWORD', $opsWorksDb->password);
-
-/** MySQL hostname */
-define('DB_HOST', $opsWorksDb->host);
-
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', $opsWorksDb->encoding);
-
-/** The Database Collate type. Don't change this if in doubt. */
+define('DB_NAME', $db->database);
+define('DB_USER', $db->username);
+define('DB_PASSWORD', $db->password);
+define('DB_HOST', $db->host);
+define('DB_CHARSET', $db->encoding);
 define('DB_COLLATE', '');
 
 /**#@+
