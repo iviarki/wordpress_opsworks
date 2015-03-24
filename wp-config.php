@@ -15,9 +15,12 @@
  */
 
 // OpsWorks Specific Setup
-require_once("shared/config/opsworks.php")
-
-$opsWorksDb = new OpsWorksDb();
+set_include_path(get_include_path() . PATH_SEPARATOR . '/srv/www/wordpress');
+$filename = "shared/config/opsworks.php";
+require_once($filename);
+$opsWorks = new OpsWorks();
+$db = $opsWorks->db;
+print_r($db);
 
 
 // ** MySQL settings - You can get this info from your web host ** //
